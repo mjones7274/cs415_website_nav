@@ -44,7 +44,7 @@ const UserProfile = () => {
 
   return (
     <div>
-        <img src={picLink}></img>
+        <img className='profile-img' src={picLink}></img>
         <h2>User</h2>
         <table className='table'>
             <thead>
