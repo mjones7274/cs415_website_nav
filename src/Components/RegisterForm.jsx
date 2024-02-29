@@ -74,15 +74,15 @@ export const RegisterForm = (props) => {
         <div >
             <h2>Register</h2>
             <form className="register-form" onSubmit={handleSubmit}>
-                <label htmlFor="firstName">First Name</label>
-                <input required value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First Name" id="firstName" name="firstName"/>
-                <label htmlFor="lastName">Last Name</label>
-                <input required value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Last Name" id="lastName" name="lastName"/>
-                <label htmlFor="email">Email</label>
-                <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email@email.com" id="email" name="email"/>
-                <label htmlFor="password">Password</label>
-                <input required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password"/>
-                <button type="submit">Register</button>
+                <label className="login-label" htmlFor="firstName">First Name</label>
+                <input className="login-input" required value={firstName} onChange={(e) => setFirstName(e.target.value)} type="text" placeholder="First Name" id="firstName" name="firstName"/>
+                <label className="login-label" htmlFor="lastName">Last Name</label>
+                <input className="login-input" required value={lastName} onChange={(e) => setLastName(e.target.value)} type="text" placeholder="Last Name" id="lastName" name="lastName"/>
+                <label className="login-label" htmlFor="email">Email</label>
+                <input className="login-input" required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email@email.com" id="email" name="email"/>
+                <label className="login-label" htmlFor="password">Password</label>
+                <input className="login-input" required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password"/>
+                <button className="login-button" type="submit">Register</button>
                 <p className="text-success"><b>{error}</b></p>
             </form>
 

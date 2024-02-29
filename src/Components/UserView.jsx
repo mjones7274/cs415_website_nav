@@ -22,7 +22,7 @@ const UserView = () => {
   return (
     <div>
         <h2>Users</h2>
-        <table className='table'>
+        <table className='user-table'>
             <thead>
                 <tr>
                     {columns.map((c, i) => (

@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
+
 
 const UserProfile = () => {
     const navigate = useNavigate();
@@ -12,6 +15,7 @@ const UserProfile = () => {
     const [infoColumns, setInfoColumns] = useState([]);
     const [info, setInfo] = useState([]);
     const [picLink, setPicLink] = useState();
+    const [infoBio, setInfoBio] = useState();
     const user_id = window.sessionStorage.getItem("user_id")
 
 
@@ -25,6 +29,7 @@ const UserProfile = () => {
             setRecord(data.user)
             setInfoColumns(Object.keys(data.info[0]))
             setInfo(data.info)
+            setInfoBio(data.info[0].profile_bio)
             setPicLink(data.info[0].profile_picture)
             setAddressColumns(Object.keys(data.addresses[0]))
             setAddresses(data.addresses)
@@ -44,62 +49,63 @@ const UserProfile = () => {
 
   return (
     <div>
-        <img className='profile-img' src={picLink}></img>
-        <h2>User</h2>
-        <table className='table'>
-            <thead>
-                <tr>
-                    {
-                        userColumns.map((c, i) => (<th key={i}>{c.replaceAll("_", " ").toUpperCase()}</th>))
-                    }
-                </tr>
+        <br />
+        <div className="page shadow">
+            <div className="main-container shadow">
+                <MDBContainer>
+                <br />
+                    <MDBRow>
+                        <MDBCol>
+                            <div className="container">
+                            <img
+                                src={picLink}
+                                alt={record.first_name}
+                                style={{ width: "20%", borderRadius: "48%" }}
+                            />
+                            </div>
+                        </MDBCol>
+                    </MDBRow>
+                    <MDBRow>
+                        <MDBCol>
+                            <div class="container">
+                                <h3>{record.first_name} {record.last_name}</h3>
 
+                                <p>{infoBio}</p>
+                            </div>
 
+                        </MDBCol>
+                    </MDBRow>
+                    <MDBRow>
+                        <table className='user-table'>
+                            <thead>
+                                <tr>
+                                    <th key="1">USER ID</th>
+                                    <th key="2">EMAIL</th>
+                                    <th key="3">USER SINCE</th>
+                                    <th key="4">LAST LOGIN</th>
 
-            </thead>
-            <tbody>
-                {
-                    <tr key={record.user_id}>
-                        <td>{record.user_id}</td>
-                        <td>{record.first_name}</td>
-                        <td>{record.last_name}</td>
-                        <td>{record.email}</td>
-                        <td className="hidetext">{record.password}</td>
-                        <td>{record.created_date}</td>
-                        <td>{record.is_active}</td>
-                        <td>{record.last_login}</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    <tr key={record.user_id}>
+                                        <td>{record.user_id}</td>
+                                        <td>{record.email}</td>
+                                        <td>{record.created_date}</td>
+                                        <td>{record.last_login}</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </MDBRow>
+                    <br />
+                </MDBContainer>
+            </div>
+        </div>
 
-        <h2>User Info</h2>
-        <table className='table'>
-            <thead>
-                <tr>
-                    {
-                        infoColumns.map((c, i) => (<th key={i}>{c.replaceAll("_", " ").toUpperCase()}</th>))
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    info.map((info,i) => (
-                    <tr key={info.user_info_id}>
-                        <td>{info.user_info_id}</td>
-                        <td>{info.profile_bio}</td>
-                        <td><a href={info.profile_picture} target="_blank">Link</a></td>
-                        <td>{info.modified_date}</td>
-                        <td>{info.created_date}</td>
-                        <td>{info.user}</td>
-                    </tr>
-                    ))
-                }
-            </tbody>
-        </table>
-
-        <h2>Addresses</h2>
-        <table className='table'>
+         <br />
+        <h2>Address</h2>
+        <table className='user-table'>
             <thead>
                 <tr>
                     {
@@ -126,8 +132,8 @@ const UserProfile = () => {
             </tbody>
         </table>
 
-        <h2>Phones</h2>
-        <table className='table'>
+        <h2>Phone</h2>
+        <table className='user-table'>
             <thead>
                 <tr>
                     {
@@ -150,7 +156,7 @@ const UserProfile = () => {
                 }
             </tbody>
         </table>
-        <button onClick={handleLogout}>Logout</button>
+        <button className="login-button" onClick={handleLogout}>Logout</button>
     </div>
   )
 }
