@@ -91,8 +91,8 @@ const UserProfile = () => {
                                     <tr key={record.user_id}>
                                         <td>{record.user_id}</td>
                                         <td>{record.email}</td>
-                                        <td>{record.created_date}</td>
-                                        <td>{record.last_login}</td>
+                                        <td>{new Date(record.created_date).toLocaleDateString()}</td>
+                                        <td>{new Date(record.last_login).toLocaleString()}</td>
                                     </tr>
                                 }
                             </tbody>
@@ -148,7 +148,7 @@ const UserProfile = () => {
                         <td>{phone.user_phone_id}</td>
                         <td>{phone.phone_type.phone_type}</td>
                         <td>{phone.phone_number}</td>
-                        <td>{phone.created_date}</td>
+                        <td>{new Date(phone.created_date).toLocaleDateString()}</td>
                         <td>{phone.is_active}</td>
                         <td>{phone.user}</td>
                     </tr>

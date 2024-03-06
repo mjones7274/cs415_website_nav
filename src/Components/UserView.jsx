@@ -39,9 +39,9 @@ const UserView = () => {
                             <td>{record.last_name}</td>
                             <td>{record.email}</td>
                             <td className="hidetext">{record.password}</td>
-                            <td>{record.created_date}</td>
+                            <td>{new Date(record.created_date).toLocaleString()}</td>
                             <td>{record.is_active}</td>
-                            <td>{record.last_login}</td>
+                            <td>{new Date(record.last_login).toLocaleString()}</td>
                         </tr>
                     ))
                 }
