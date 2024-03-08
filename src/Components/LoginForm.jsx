@@ -94,7 +94,7 @@ const LoginForm = (props) => {
                 <label className="login-label" htmlFor="password">Password</label>
                 <input className="login-input" required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password"/>
                 <button className="login-button" type="submit">Login</button>
-                <p className="text-success"><b>{error}</b></p>
+                <p className="text-success">{error}</p>
             </form>
             <button className="link-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>
             <p>{loading ? <FidgetSpinner /> : ''}</p>
