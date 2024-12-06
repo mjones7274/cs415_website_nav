@@ -78,16 +78,19 @@
   color: #7066f6;
 }
 
+.text-success {
+  background: none;
+  color: white;
+  text-decoration: underline;
+}
+
 .link-btn {
   background: none;
   color: white;
   text-decoration: underline;
 }
 
-.text-success {
-  background: none;
-  color: white;
-}
+
 
 
 

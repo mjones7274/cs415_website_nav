@@ -83,7 +83,7 @@ export const RegisterForm = (props) => {
                 <label className="login-label" htmlFor="password">Password</label>
                 <input className="login-input" required value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="*********" id="password" name="password"/>
                 <button className="login-button" type="submit">Register</button>
-                <p className="text-success"><b>{error}</b></p>
+                <p color="white"><b>{error}</b></p>
             </form>
 
             <button className="link-btn" onClick={() => navigate('/login')}>Already have an account? Login here.</button>

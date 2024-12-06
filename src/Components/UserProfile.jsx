@@ -24,7 +24,6 @@ const UserProfile = () => {
         fetch(process.env.REACT_APP_API_URL_BASE + '/users/user/' + user_id)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setUserColumns(Object.keys(data.user))
             setRecord(data.user)
             setInfoColumns(Object.keys(data.info[0]))
@@ -35,6 +34,7 @@ const UserProfile = () => {
             setAddresses(data.addresses)
             setPhoneColumns(Object.keys(data.phones[0]))
             setPhones(data.phones)
+            console.log(picLink)
         })
         .catch(error => console.error(error));
     }, []);
@@ -88,8 +88,8 @@ const UserProfile = () => {
                             </thead>
                             <tbody>
                                 {
-                                    <tr key={record.user_id}>
-                                        <td>{record.user_id}</td>
+                                    <tr key={record.web_user_id}>
+                                        <td>{record.web_user_id}</td>
                                         <td>{record.email}</td>
                                         <td>{new Date(record.created_date).toLocaleDateString()}</td>
                                         <td>{new Date(record.last_login).toLocaleString()}</td>
@@ -118,14 +118,15 @@ const UserProfile = () => {
                     addresses.map((address,i) => (
                     <tr key={address.user_address_id}>
                         <td>{address.user_address_id}</td>
-                        <td>{address.address_type.address_type}</td>
                         <td>{address.street_1}</td>
                         <td>{address.street_2}</td>
                         <td>{address.city}</td>
                         <td>{address.st}</td>
                         <td>{address.zip}</td>
                         <td>{address.country}</td>
-                        <td>{address.user}</td>
+                        <td>{new Date(address.created_date).toLocaleDateString()}</td>
+                        <td>{address.web_user.web_user_id}</td>
+                        <td>{address.address_type.address_type}</td>
                     </tr>
                     ))
                 }
@@ -145,12 +146,10 @@ const UserProfile = () => {
                 {
                     phones.map((phone,i) => (
                     <tr key={phone.user_phone_id}>
-                        <td>{phone.user_phone_id}</td>
-                        <td>{phone.phone_type.phone_type}</td>
                         <td>{phone.phone_number}</td>
+                        <td>{phone.phone_type.phone_type}</td>
+                        <td>{String(phone.is_active)}</td>
                         <td>{new Date(phone.created_date).toLocaleDateString()}</td>
-                        <td>{phone.is_active}</td>
-                        <td>{phone.user}</td>
                     </tr>
                     ))
                 }

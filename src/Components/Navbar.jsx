@@ -12,10 +12,10 @@ function NavbarTop() {
     const [pages, setPages] = useState([]);
 
     useEffect(() => {
-        fetch(process.env.REACT_APP_API_URL_BASE + '/pages')
+        fetch(process.env.REACT_APP_API_URL_BASE + '/pages/')
         .then(res => res.json())
         .then(data => {
-            setPages(data.pages)
+            setPages(data)
         })
         .catch(error => console.error(error));
     }, []);

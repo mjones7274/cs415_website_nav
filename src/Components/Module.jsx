@@ -14,10 +14,10 @@ const Module = ({id}) => {
     fetch(process.env.REACT_APP_API_URL_BASE + '/pages/page/' + routeParams.id)
     .then(res => res.json())
     .then(data => {
-        setPageName(data.page.page_name)
-        setPageTitle(data.page.page_title)
-        setPageDescription(data.page.page_description)
-        setPicLink(data.page.page_picture)
+        setPageName(data.page_name)
+        setPageTitle(data.page_title)
+        setPageDescription(data.page_description)
+        setPicLink(data.page_picture)
     })
     .catch(error => console.error(error));
 });
